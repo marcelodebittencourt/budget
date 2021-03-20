@@ -33,6 +33,8 @@ router.post('/entries', (req, res) => {
     const value = req.body.value.substring(0, 11);
 
     execSQLQuery(`INSERT INTO Entries(Type, Name, Value) VALUES('${type}','${name}','${value}')`, res);
+
+    //retornar http 201 se inseriu ok
 });
 
 router.patch('/entries/:id', (req, res) => {
@@ -52,8 +54,8 @@ function execSQLQuery(sqlQry, res) {
     const connection = mysql.createConnection({
         host: 'localhost',
         port: 3306,
-        user: 'root',
-        password: 'root',
+        user: 'teste',
+        password: 'testesisnema',
         database: 'budget'
     });
 
