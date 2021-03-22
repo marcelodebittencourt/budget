@@ -1,0 +1,80 @@
+swagger: '2.0'
+info:
+  description: API de receitas e despesas para orçamento familiar
+  title: entries
+  version: v1
+host: localhost:3000
+schemes:
+  - https
+basePath: /
+paths:
+  /:
+    get:
+      summary: Responde se a API está funcionando
+      responses:
+        '200':
+          description: Resposta com sucesso
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: funcionando
+  /entries:
+    get:
+      summary: Lista todas rúbricas
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              ID:
+                type: integer
+                example: 1
+              Type:
+                type: string
+                example: R                
+              Name:
+                type: string
+                example: Salário 1                
+              Value:
+                type: integer
+                example: 1500    
+  /entries/{id}:
+    get:
+      summary: Lista uma rúbrica específica
+      parameters:
+        - in: query
+          name: format
+          type: string
+          description: 'The format to return the response in, i.e. json.'
+          default: json
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              ID:
+                type: integer
+                example: 1
+              Type:
+                type: string
+                example: R                
+              Name:
+                type: string
+                example: Salário 1                
+              Value:
+                type: integer
+                example: 1500                    
+    delete:
+      summary: Exclui uma rúbrica específica
+      responses:
+        '200':
+          description: Success response
+    patch:
+      summary: Atualiza uma rúbrica específica
+      responses:
+        '200':
+          description: Success response          
